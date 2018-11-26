@@ -29,7 +29,7 @@ public class RoachMotel {
     }
     
     /*
-    public static Room checkIn(RoachColony rc, String str, Amenity, am){
+    public static Room checkIn(RoachColony rc, String str, Amenity am){
         return Room object;
     }
     */

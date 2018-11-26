@@ -1,12 +1,14 @@
 
 public class DeluxeRoom extends Room {
+    private double cost;
+
+    public DeluxeRoom(){
+        cost = 75.0;
+    }
+
     @Override
     public double cost(){
-        return getBaseRate();
+        return cost;
     }
-    
-    @Override
-    public void addAmenities(){
-        //Adds nothing to the set of amenities.
-    }
+
 }

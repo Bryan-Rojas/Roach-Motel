@@ -8,6 +8,17 @@
  *
  * @author Bryan
  */
-public class RegularRoom {
-    
+public class RegularRoom extends Room {
+
+    private double cost;
+
+    public RegularRoom(){
+        cost = 50.0;
+    }
+
+    @Override
+    public double cost() {
+        return cost;
+    }
+
 }

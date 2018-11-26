@@ -1,12 +1,15 @@
 
 public class SuiteRoom extends Room {
+
+    private double cost;
+
+    public SuiteRoom(){
+        cost = 100.0;
+    }
+
     @Override
     public double cost(){
-        return getBaseRate();
+        return cost;
     }
-    
-    @Override
-    public void addAmenities(){
-        //Adds nothing to the set of amenities.
-    }
+
 }
