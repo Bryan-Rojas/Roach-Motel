@@ -4,19 +4,15 @@
 
 public class SpaAmenity extends AmenityDecorator {
 
-    private Room room;
-
-    public SpaAmenity(Room room){
-        this.room = room;
-    }
+    public SpaAmenity(){}
 
     public String getDescription(){
-        return room.getDescription() + ", Spa";
+        return "Spa";
     }
 
     public double cost(){
 
-        return 20.00 + room.cost();
+        return 20.00;
 
     }
 }
