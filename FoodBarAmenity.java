@@ -3,16 +3,17 @@
  */
 public class FoodBarAmenity extends AmenityDecorator {
 
-    public FoodBarAmenity(){
-    }
+    private Room room;
+
+    public FoodBarAmenity(){}
 
     public String getDescription(){
-     return "Foodbar";
+        return room.getDescription() + ", Foodbar";
     }
 
     public double cost(){
 
-        return 10.00;
+        return 10.00 + room.cost();
 
     }
 }
