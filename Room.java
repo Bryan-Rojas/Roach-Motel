@@ -16,7 +16,7 @@ public abstract class Room {
     public String getDescription(){
         return description;
     }
-    
+
     public abstract double cost();
 
     public void addAmenity(AmenityDecorator ad){

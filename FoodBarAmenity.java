@@ -3,17 +3,25 @@
  */
 public class FoodBarAmenity extends AmenityDecorator {
 
-    private Room room;
+    private boolean refill;
 
-    public FoodBarAmenity(){}
+    public FoodBarAmenity(){
+        refill = false;
+    }
 
     public String getDescription(){
-        return room.getDescription() + ", Foodbar";
+        return "Foodbar";
     }
 
     public double cost(){
+        if(refill) {
+            return 15.00;
+        } else {
+            return 10.00;
+        }
+    }
 
-        return 10.00 + room.cost();
-
+    public void AddRefill() {
+        refill = true;
     }
 }

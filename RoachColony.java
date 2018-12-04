@@ -13,7 +13,6 @@ public class RoachColony implements Observer {
         this.population = population;
         this.growthRate = growthRate;
         this.motel = motel;
-        motel.registerObserver(this);
     }
 
     //GETTERS
@@ -44,11 +43,16 @@ public class RoachColony implements Observer {
 
     @Override
     public void update() {
-     display();
+        display();
     }
 
     public void display(){
         System.out.println("The roach colony: " + name + " has received a notification of vacancy.");
+    }
+
+    @Override
+    public String toString() {
+        return "This is a Roach Colony: " + name + ", with a population of: " + population;
     }
 }
 

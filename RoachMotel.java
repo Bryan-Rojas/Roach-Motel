@@ -1,42 +1,33 @@
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 public class RoachMotel implements Subject{
     private static RoachMotel RM;
-    private Map<Integer, Boolean> RM_map;
-    private boolean noVacancySign;
+    private Map<Room, Boolean> RM_map;
+    private boolean vacancy;
     private ArrayList<Observer> waitList;
-    
-    private RoachMotel(){
 
+    private RoachMotel(){
+        vacancy = true;
         waitList = new ArrayList<>();
-        RM_map = new HashMap<Integer,Boolean>();
+        RM_map = new HashMap<Room,Boolean>();
     }
-    
+
     public static RoachMotel getInstance(){
         if(RM == null){
             RM = new RoachMotel();
         }
         return RM;
     }
-    
-    public static String turnOnSign(){
-        /*
-        if(RM_map.size() == CAPACITY_SIZE){
-            return "Sorry, we're full. No Vacancy."
-        }
-        String welcome = "Welcome, we have " + (CAPACITY_SIZE - RM_map.size()) + " rooms available.";
-        return welcome;
-        */
-        return "placeholder, see psuedocode.";
+
+    public void vacancySwitch(){
+        vacancy = !vacancy;
     }
 
-    public void createRooms(){
-        for (int i = 1; i<6; i++) {
-            RM_map.put(100 + i, true);
+
+    public void createRooms(int numberOfRooms){
+        for (int i = 1; i<numberOfRooms; i++) {
+            RM_map.put(new RegularRoom(), true);
         }
 
     }
@@ -58,42 +49,69 @@ public class RoachMotel implements Subject{
     @Override
     public void notifyObserver() {
         for (Observer o : waitList){
-
             o.update();
         }
 
     }
-    
 
-    public Room checkIn(RoachColony rc, String roomType, boolean foodBar, boolean spa, boolean shower){
+
+    public void checkIn(RoachColony rc, String roomType, boolean foodBar, boolean foodbarAndRefill, boolean spa, boolean shower){
+
+        int nonVacantRooms = 0;
         Room room;
 
-        switch (roomType){
-            case "deluxe" :
-                room = new DeluxeRoom();
+        for(Room key : RM_map.keySet()) {
+            if(RM_map.get(key)) {
+                room = key;
+                RM_map.remove(key);
                 break;
-
-            case "suite" :
-                room = new SuiteRoom();
-                break;
-
-            default:
-                room = new RegularRoom();
-                break;
+            } else {
+                nonVacantRooms++;
+            }
         }
 
-        if(foodBar){
-            room.addAmenity(new FoodBarAmenity());
-        } if (spa){
-            room.addAmenity(new SpaAmenity());
-        } if (shower){
-            room.addAmenity(new SprayResistantShowerAmenity());
-        }
+        if(nonVacantRooms == RM_map.size()) {
+            System.out.println("There is no more vacant rooms\n" + rc.getName() + " is added to the waitlist");
+            vacancySwitch();
+            registerObserver(rc);
 
-        return room;
+        } else {
+            switch (roomType){
+                case "deluxe" :
+                    room = new DeluxeRoom();
+                    break;
+
+                case "suite" :
+                    room = new SuiteRoom();
+                    break;
+
+                default:
+                    room = new RegularRoom();
+                    break;
+            }
+
+            if((foodBar && foodbarAndRefill) || foodbarAndRefill) {
+                FoodBarAmenity f = new FoodBarAmenity();
+                f.AddRefill();
+                room.addAmenity(f);
+            } else if(foodBar) {
+                room.addAmenity(new FoodBarAmenity());
+            }
+
+            if (spa){
+                room.addAmenity(new SpaAmenity());
+            }
+
+            if (shower){
+                room.addAmenity(new SprayResistantShowerAmenity());
+            }
+
+            RM_map.put(room, false);
+            System.out.println(rc.getName() + " checked in to a room");
+        }
     }
 
-    
+
     /*
     public static double checkOut(Room, int){
         double cost = Room.calculateRate();
@@ -103,6 +121,14 @@ public class RoachMotel implements Subject{
 
     @Override
     public String toString() {
-        return "Welcome to the roach motel! The following rooms are available: " + RM_map;
+        String str = "Welcome to the roach motel!";
+
+        if(vacancy) {
+            str += "\nVacancy! The following rooms are available: " + RM_map;
+        } else {
+            str += "\nNo Vacancy! The waitlist for a room is: " + waitList;
+        }
+
+        return str;
     }
 }
