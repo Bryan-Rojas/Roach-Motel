@@ -1,4 +1,6 @@
 /**
+ * Roach Colony class implements observer class for observer design pattern
+ * Has functions: getters and setters, throw party, update, display, and overwritten toString
  * Created by josep on 28-11-2018.
  */
 public class RoachColony implements Observer {
@@ -9,6 +11,13 @@ public class RoachColony implements Observer {
     private Subject motel;
     private Room room;
 
+    /**
+     * constructor for RoachColony class
+     * @param name
+     * @param population
+     * @param growthRate
+     * @param motel
+     */
     public RoachColony(String name, int population, double growthRate, Subject motel){
         this.name = name;
         this.population = population;
@@ -50,7 +59,12 @@ public class RoachColony implements Observer {
         this.room = room;
     }
 
-
+    /**
+     * Function increases population by the growth rate and reduces population
+     * depending on the room and if it has sprayers
+     * @param none
+     * @return none
+     */
     public void throwParty() {
         System.out.println(name + " throws a PARTY!!!!");
         System.out.print("Population increases from " + population);
@@ -64,11 +78,17 @@ public class RoachColony implements Observer {
         System.out.println("After being sprayed, population is reduced to " + population);
     }
 
+    /**
+     * calls display function
+     */
     @Override
     public void update() {
         display();
     }
 
+    /**
+     * outputs to console if a roach colony is notified of the vacancy
+     */
     public void display(){
         System.out.println("The Roach Colony " + name + " has received a notification of vacancy.");
     }
