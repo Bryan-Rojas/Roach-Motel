@@ -1,14 +1,9 @@
 /**
- * Bryan, Clayton, Josephine & Oliver
  * December 5, 2018
  * Purpose: Decorated class to describe the Spray Resistant Shower Amenity as well as the cost
  * Inputs:
  * Output: description, and cost of Spray Resistant Shower
  */
-
-public class SprayResistantShowerAmenity extends AmenityDecorator {
-
-    /**
      * Default constructor - no body
      */
     public SprayResistantShowerAmenity(){}

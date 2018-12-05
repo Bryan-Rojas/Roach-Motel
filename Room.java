@@ -9,6 +9,8 @@
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 public abstract class Room {
 
     private Set<AmenityDecorator> amenities; //set of amenities because there should be no duplicates

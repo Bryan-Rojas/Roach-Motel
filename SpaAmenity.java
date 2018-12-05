@@ -24,9 +24,7 @@ public class SpaAmenity extends AmenityDecorator {
      * @return cost of Spa
      */
     public double cost(){
-
         return 20.00;
-
     }
 }
 
