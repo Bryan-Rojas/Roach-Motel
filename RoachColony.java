@@ -51,18 +51,31 @@ public class RoachColony implements Observer {
     }
 
 
+    public void throwParty() {
+        System.out.println(name + " throws a PARTY!!!!");
+        System.out.print("Population increases from " + population);
+
+        population += population * growthRate;
+
+        System.out.println(" to " + population);
+
+        ((RoachMotel) motel).sprayParty(this);
+
+        System.out.println("After being sprayed, population is reduced to " + population);
+    }
+
     @Override
     public void update() {
         display();
     }
 
     public void display(){
-        System.out.println("The roach colony: " + name + " has received a notification of vacancy.");
+        System.out.println("The Roach Colony " + name + " has received a notification of vacancy.");
     }
 
     @Override
     public String toString() {
-        return "This is a Roach Colony: " + name + ", with a population of: " + population;
+        return "This is a Roach Colony " + name + ", with a population of: " + population;
     }
 }
 

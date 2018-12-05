@@ -133,6 +133,31 @@ public class RoachMotel implements Subject{
         return cost;
     }
 
+
+    public void sprayParty(RoachColony colony) {
+        System.out.println("Hotel sprays with insecticide");
+
+        //get amenities from the room of the colony
+        Set<AmenityDecorator> amenities = colony.getRoom().GetAmenities();
+
+        //loop through amenities
+        for(AmenityDecorator a : amenities) {
+            //if amenities contains an instance of Spray Resistant Shower
+            if(a instanceof SprayResistantShowerAmenity) {
+                System.out.println("Room has Spray Resistant Shower - colony is reduced by 25%");
+
+                //reduce population by 25%, round up because roaches lives even if they are in pieces
+                colony.setPopulation((int) Math.ceil(colony.getPopulation() * 0.75));
+                return;
+            }
+        }
+
+        System.out.println("No Spray Resistant Shower - colony is reduced by 50%");
+        //if there is no Spray Resistant Shower - reduce colony by 50%
+        colony.setPopulation((int) Math.ceil(colony.getPopulation() * 0.5));
+    }
+
+
     @Override
     public String toString() {
         String str = "Welcome to the roach motel!";

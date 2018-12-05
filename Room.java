@@ -33,6 +33,10 @@ public abstract class Room {
         return cost;
     }
 
+    public Set<AmenityDecorator> GetAmenities() {
+        return amenities;
+    }
+
     @Override
     public String toString() {
         String str = "This is a " + this.getClass().getName() + " with the following amenities: ";

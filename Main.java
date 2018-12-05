@@ -2,17 +2,15 @@
 public class Main {
     public static void main(String[] args){
         RoachMotel TheRoach911 = RoachMotel.getInstance();
-        // TheRoach911.demo();
 
         TheRoach911.createRooms(6);
         System.out.println(TheRoach911);
 
 
-
         RoachColony r1 = new RoachColony("Nielsen",2,1.0,TheRoach911);
         RoachColony r2 = new RoachColony("Hansen",3,1.2,TheRoach911);
         RoachColony r3 = new RoachColony("Skywalker",4,1.3,TheRoach911);
-        RoachColony r4 = new RoachColony("vw ey553&¤%w",2,2.0,TheRoach911);
+        RoachColony r4 = new RoachColony("Gremlins",2,2.0,TheRoach911);
         RoachColony r5 = new RoachColony("Jensen",10,0.8,TheRoach911);
         RoachColony r6 = new RoachColony("Vader",5,1.0,TheRoach911);
 
@@ -34,6 +32,10 @@ public class Main {
 
         System.out.println("");
         System.out.println(TheRoach911);
+        System.out.println("");
+
+        r2.throwParty();
+
 
 
     }
