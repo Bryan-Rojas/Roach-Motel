@@ -20,9 +20,17 @@ public abstract class Room {
     public abstract double cost();
 
     public void addAmenity(AmenityDecorator ad){
-
         amenities.add(ad);
+    }
 
+    public double getAmenityCost() {
+        Double cost = 0.0;
+
+        for(AmenityDecorator amenity : amenities) {
+            cost += amenity.cost();
+        }
+
+        return cost;
     }
 
     @Override

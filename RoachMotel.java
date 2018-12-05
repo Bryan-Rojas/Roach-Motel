@@ -107,17 +107,31 @@ public class RoachMotel implements Subject{
             }
 
             RM_map.put(room, false);
+
+            rc.setRoom(room);
+
             System.out.println(rc.getName() + " checked in to a room");
         }
     }
 
 
-    /*
-    public static double checkOut(Room, int){
-        double cost = Room.calculateRate();
+    public double checkOut(RoachColony colony, int days){
+
+        System.out.println("Roach colony " + colony + " has checked out");
+
+        Room colonyRoom = colony.getRoom();
+        RM_map.put(colonyRoom, true);
+
+        if(!vacancy) {
+            vacancySwitch();
+            notifyObserver();
+            waitList.clear();
+        }
+
+        double cost = (colonyRoom.cost() + colonyRoom.getAmenityCost()) * days;
+
         return cost;
     }
-    */
 
     @Override
     public String toString() {

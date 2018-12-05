@@ -18,13 +18,21 @@ public class Main {
 
         TheRoach911.notifyObserver();
 
-        TheRoach911.checkIn(r1,"deluxe", true, false, true);
-        TheRoach911.checkIn(r2,"regular", false, true, true);
-        TheRoach911.checkIn(r3,"suite", true, true, false);
-        TheRoach911.checkIn(r4,"deluxe", true, true, true);
-        TheRoach911.checkIn(r5,"suite", false, false, false);
-        TheRoach911.checkIn(r6,"regular", true, true, true);
+        TheRoach911.checkIn(r1,"deluxe", true, false, true, true);
+        TheRoach911.checkIn(r2,"regular", false, true, false, false);
+        TheRoach911.checkIn(r3,"suite", true, true, false, false);
+        TheRoach911.checkIn(r4,"deluxe", false, true, true, true);
+        TheRoach911.checkIn(r5,"suite", false, false, false, false);
+        TheRoach911.checkIn(r6,"regular", true, true, true, true);
         
+        System.out.println(TheRoach911);
+
+        System.out.println("");
+        System.out.println("Time to check out");
+        Double cost = TheRoach911.checkOut(r1, 3);
+        System.out.println("cost for checkout is " + cost);
+
+        System.out.println("");
         System.out.println(TheRoach911);
 
 

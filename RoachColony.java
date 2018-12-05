@@ -7,6 +7,7 @@ public class RoachColony implements Observer {
     private int population;
     private double growthRate;
     private Subject motel;
+    private Room room;
 
     public RoachColony(String name, int population, double growthRate, Subject motel){
         this.name = name;
@@ -28,6 +29,10 @@ public class RoachColony implements Observer {
         return growthRate;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
     //SETTERS
     public void setName(String name) {
         this.name = name;
@@ -40,6 +45,11 @@ public class RoachColony implements Observer {
     public void setGrowthRate(double growthRate) {
         this.growthRate = growthRate;
     }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
 
     @Override
     public void update() {
