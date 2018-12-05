@@ -7,7 +7,7 @@
 public interface Observer {
 
     /**
-     * will be overrided by subsequent classes
+     * will be overwritten by subsequent classes
      */
     public void update();
 }
