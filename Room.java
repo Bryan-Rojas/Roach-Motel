@@ -2,6 +2,8 @@
 import java.util.HashSet;
 import java.util.Set;
 
+
+
 public abstract class Room {
     private String description;
     private double baseRate;
