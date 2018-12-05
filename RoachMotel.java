@@ -2,17 +2,25 @@
 import java.util.*;
 
 public class RoachMotel implements Subject{
+
     private static RoachMotel RM;
     private Map<Room, Boolean> RM_map;
     private boolean vacancy;
     private ArrayList<Observer> waitList;
 
+    /**
+     * Private constructor to ensure only one instance (singleton)
+     */
     private RoachMotel(){
         vacancy = true;
         waitList = new ArrayList<>();
         RM_map = new HashMap<Room,Boolean>();
     }
 
+    /**
+     *
+     * @return the only Roach Motel instance
+     */
     public static RoachMotel getInstance(){
         if(RM == null){
             RM = new RoachMotel();
@@ -20,11 +28,22 @@ public class RoachMotel implements Subject{
         return RM;
     }
 
-    public void vacancySwitch(){
-        vacancy = !vacancy;
+    /**
+     * Vacancy sign
+     */
+    public void vacancy(){
+        vacancy = true;
     }
 
+    /**
+     * NoVacancy sign
+     */
+    public void noVacancy(){vacancy = false;}
 
+    /**
+     * Creating rooms and places them in the HashMap as a Regular room and vacant as a standard
+     * @param numberOfRooms - takes the wished number of rooms for the Roach Motel
+     */
     public void createRooms(int numberOfRooms){
         for (int i = 1; i<numberOfRooms; i++) {
             RM_map.put(new RegularRoom(), true);
@@ -32,11 +51,19 @@ public class RoachMotel implements Subject{
 
     }
 
+    /**
+     * Registers observers (for the wait list)
+     * @param o - takes an observer (Roach colony)
+     */
     @Override
     public void registerObserver(Observer o) {
         waitList.add(o);
     }
 
+    /**
+     * Removes observers (from the wait list)
+     * @param o - takes an observer (Roach colony)
+     */
     @Override
     public void removeObserver(Observer o) {
 
@@ -46,23 +73,33 @@ public class RoachMotel implements Subject{
         }
     }
 
+    /**
+     * Notifies observers on the wait list
+     */
     @Override
     public void notifyObserver() {
         for (Observer o : waitList){
             o.update();
         }
-
     }
 
-
+    /**
+     * Check in method
+     * @param rc - The particular roach colony
+     * @param roomType - The wished room type
+     * @param foodBar - if wanted (true/false)
+     * @param foodbarAndRefill - if wanted (true/false)
+     * @param spa - if wanted (true/false)
+     * @param shower - if wanted (true/false)
+     */
     public void checkIn(RoachColony rc, String roomType, boolean foodBar, boolean foodbarAndRefill, boolean spa, boolean shower){
 
         int nonVacantRooms = 0;
         Room room;
 
+        //Checks for a vacant room and removes it from the Hash map
         for(Room key : RM_map.keySet()) {
             if(RM_map.get(key)) {
-                room = key;
                 RM_map.remove(key);
                 break;
             } else {
@@ -70,9 +107,11 @@ public class RoachMotel implements Subject{
             }
         }
 
+        //If there are no more vacant rooms, it prints a message
+        //Otherwise the room is saved in the map again as the wished room type and with the wished amenities
         if(nonVacantRooms == RM_map.size()) {
             System.out.println("There is no more vacant rooms\n" + rc.getName() + " is added to the waitlist");
-            vacancySwitch();
+            noVacancy();
             registerObserver(rc);
 
         } else {
@@ -84,17 +123,18 @@ public class RoachMotel implements Subject{
                 case "suite" :
                     room = new SuiteRoom();
                     break;
-
+                                            //If the wished type of the room is not deluxe or suite, it becomes a regular room
                 default:
                     room = new RegularRoom();
                     break;
             }
 
+            //If foodBar refill is chosen, then the room is added a foodbar with refill is added
             if((foodBar && foodbarAndRefill) || foodbarAndRefill) {
                 FoodBarAmenity f = new FoodBarAmenity();
                 f.AddRefill();
                 room.addAmenity(f);
-            } else if(foodBar) {
+            } else if(foodBar) {                //Else the foodbar is added, only
                 room.addAmenity(new FoodBarAmenity());
             }
 
@@ -106,31 +146,44 @@ public class RoachMotel implements Subject{
                 room.addAmenity(new SprayResistantShowerAmenity());
             }
 
+            //The room is added and vacancy is now false
             RM_map.put(room, false);
 
+            //The roach colony sets the room
             rc.setRoom(room);
 
-            System.out.println(rc.getName() + " checked in to a room");
+            System.out.println(rc.getName() + " checked in to a room.");
         }
     }
 
+    /**
+     * Check out method
+     * @param colony - Takes the particular roach colony
+     * @param days - Takes the amount of days the roach colony has stayed in the motel
+     */
+    public void checkOut(RoachColony colony, int days){
 
-    public double checkOut(RoachColony colony, int days){
+        System.out.println("Roach colony " + colony + " is checking out:");
 
-        System.out.println("Roach colony " + colony + " has checked out");
-
+        //Retrieves the particular and saves it as vacant
         Room colonyRoom = colony.getRoom();
         RM_map.put(colonyRoom, true);
 
-        if(!vacancy) {
-            vacancySwitch();
-            notifyObserver();
-            waitList.clear();
-        }
-
+        //Calculates the the cost of the room and amenities times the number of days
         double cost = (colonyRoom.cost() + colonyRoom.getAmenityCost()) * days;
 
-        return cost;
+        System.out.println("The totalt price for the room is: $" +  cost + ". \n The Colony has been checked out now. ");
+
+        if(vacancy == false) {
+            vacancy();
+            notifyObserver();
+            waitList.clear();
+            System.out.println("The wait list has been cleared.");
+        }
+
+
+
+
     }
 
 
@@ -163,7 +216,14 @@ public class RoachMotel implements Subject{
         String str = "Welcome to the roach motel!";
 
         if(vacancy) {
-            str += "\nVacancy! The following rooms are available: " + RM_map;
+            str += "\nVacancy! The following rooms are available: ";
+            for(Room room : RM_map.keySet()) {
+                if (RM_map.get(room) == true){
+
+                    str += room + ", ";
+                }
+            }
+
         } else {
             str += "\nNo Vacancy! The waitlist for a room is: " + waitList;
         }

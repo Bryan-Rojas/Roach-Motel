@@ -27,8 +27,7 @@ public class Main {
 
         System.out.println("");
         System.out.println("Time to check out");
-        Double cost = TheRoach911.checkOut(r1, 3);
-        System.out.println("cost for checkout is " + cost);
+        TheRoach911.checkOut(r1, 3);
 
         System.out.println("");
         System.out.println(TheRoach911);
