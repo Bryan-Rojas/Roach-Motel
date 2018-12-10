@@ -25,7 +25,7 @@ public class Main {
         TheRoach911.notifyObserver();
 
         TheRoach911.checkIn(r1,"deluxe", true, false, true, true);
-        TheRoach911.checkIn(r2,"regular", false, true, false, false);
+        TheRoach911.checkIn(r2,"regular", false, false, false, false);
         TheRoach911.checkIn(r3,"suite", true, true, false, false);
         TheRoach911.checkIn(r4,"deluxe", false, true, true, true);
         TheRoach911.checkIn(r5,"suite", false, false, false, true);
@@ -52,11 +52,23 @@ public class Main {
 
         RoachColony r7 = new RoachColony("Andersen", 2, 4.0, TheRoach911);
         System.out.println(r7);
-
         TheRoach911.checkIn(r7, "deluxe", true, true, false, false);
         System.out.println();
 
+        RoachColony r8 = new RoachColony("The Olympic Roach Team", 15, 3.6, TheRoach911);
+        System.out.println(r8);
+        TheRoach911.checkIn(r8, "suite", true, true, true, true);
+        System.out.println();
+
+        RoachColony r9 = new RoachColony("Rock'n'Roach Punk Band", 5, 0.2, TheRoach911);
+        System.out.println(r9);
+        TheRoach911.checkIn(r9, "suite", true, false, true, false);
+        System.out.println();
+
         System.out.println(TheRoach911);
+        System.out.println();
+
+        TheRoach911.checkOut(r6, 9);
         System.out.println();
 
         r2.throwParty();

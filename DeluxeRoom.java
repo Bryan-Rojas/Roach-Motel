@@ -31,4 +31,8 @@ public class DeluxeRoom extends Room {
         return cost;
     }
 
+    @Override
+    public String toString() {
+        return "This is a Deluxe room with a cost of " + cost;
+    }
 }

@@ -13,13 +13,13 @@ public class RoomFactory {
      * @param type - the type of Room as a string
      * @return an instance of a concrete Room
      */
-    public Room createRoom(String type){
+    public static Room createRoom(String type){
 
         Room room = null;
 
-        if(type.equals("Regular")) {       room = new RegularRoom();
-        } else if(type.equals("Deluxe")) { room = new DeluxeRoom();
-        } else if(type.equals("Suite")) {  room = new SuiteRoom();
+        if(type.equals("regular")) {       room = new RegularRoom();
+        } else if(type.equals("deluxe")) { room = new DeluxeRoom();
+        } else if(type.equals("suite")) {  room = new SuiteRoom();
         }
         return room;
     }

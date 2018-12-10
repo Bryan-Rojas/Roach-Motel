@@ -122,19 +122,8 @@ public class RoachMotel implements Subject{
             registerObserver(rc);
 
         } else {
-            switch (roomType){
-                case "deluxe" :
-                    room = new DeluxeRoom();
-                    break;
 
-                case "suite" :
-                    room = new SuiteRoom();
-                    break;
-                                            //If the wished type of the room is not deluxe or suite, it becomes a regular room
-                default:
-                    room = new RegularRoom();
-                    break;
-            }
+            room = RoomFactory.createRoom(roomType);
 
             //If foodBar refill is chosen, then the room is added a foodbar with refill is added
             if((foodBar && foodbarAndRefill) || foodbarAndRefill) {
