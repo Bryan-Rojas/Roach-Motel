@@ -160,6 +160,19 @@ public class RoachMotel implements Subject{
             rc.setRoom(room);
 
             System.out.println(rc.getName() + " checked in to a room.");
+
+
+            //after colony has checked in, check if there is still available rooms
+            int count = 0;
+            for(Room key : RM_map.keySet()) {
+                if(!RM_map.get(key)) {
+                    count++;
+                }
+            }
+
+            if(count == RM_map.size()) {
+                noVacancy();
+            }
         }
     }
 

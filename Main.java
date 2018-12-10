@@ -28,7 +28,7 @@ public class Main {
         TheRoach911.checkIn(r2,"regular", false, true, false, false);
         TheRoach911.checkIn(r3,"suite", true, true, false, false);
         TheRoach911.checkIn(r4,"deluxe", false, true, true, true);
-        TheRoach911.checkIn(r5,"suite", false, false, false, false);
+        TheRoach911.checkIn(r5,"suite", false, false, false, true);
         System.out.println();
         TheRoach911.checkIn(r6,"regular", true, true, true, true);
 
@@ -43,10 +43,25 @@ public class Main {
         System.out.println();
         System.out.println(TheRoach911);
 
+
+        TheRoach911.checkIn(r6, "suite", true, false, true, false);
+        System.out.println();
+
+        System.out.println(TheRoach911);
+        System.out.println();
+
+        RoachColony r7 = new RoachColony("Andersen", 2, 4.0, TheRoach911);
+        System.out.println(r7);
+
+        TheRoach911.checkIn(r7, "deluxe", true, true, false, false);
+        System.out.println();
+
+        System.out.println(TheRoach911);
+        System.out.println();
+
         r2.throwParty();
         System.out.println();
         r5.throwParty();
         System.out.println();
-
     }
 }
