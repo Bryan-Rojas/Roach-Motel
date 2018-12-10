@@ -1,3 +1,11 @@
+/**
+ * Bryan, Clayton, Josephine & Oliver
+ * December 5, 2018
+ * Purpose: It's our main class and tester to test functionality of all our classes. Everything
+ * hard coded and is a simulation of our Roach-Motel.
+ * Inputs: N/A 
+ * Output: Sample output to show functionaility of our Roach-Motel named "The Roach 911"
+*/
 
 public class Main {
     public static void main(String[] args){
@@ -21,21 +29,24 @@ public class Main {
         TheRoach911.checkIn(r3,"suite", true, true, false, false);
         TheRoach911.checkIn(r4,"deluxe", false, true, true, true);
         TheRoach911.checkIn(r5,"suite", false, false, false, false);
+        System.out.println();
         TheRoach911.checkIn(r6,"regular", true, true, true, true);
+
+        System.out.println();
         
         System.out.println(TheRoach911);
 
-        System.out.println("");
-        System.out.println("Time to check out");
+        System.out.println();
+        System.out.println("Time to check out!");
         TheRoach911.checkOut(r1, 3);
 
-        System.out.println("");
+        System.out.println();
         System.out.println(TheRoach911);
-        System.out.println("");
 
         r2.throwParty();
-
-
+        System.out.println();
+        r5.throwParty();
+        System.out.println();
 
     }
 }

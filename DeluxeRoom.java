@@ -2,8 +2,8 @@
  * Bryan, Clayton, Josephine & Oliver
  * December 5, 2018
  * Purpose: This class describes a concrete Room of type Deluxe, with a description and cost
- * Inputs:
- * Output: string description, and cost
+ * Inputs: N/A
+ * Output: String description, and cost
  */
 
 public class DeluxeRoom extends Room {

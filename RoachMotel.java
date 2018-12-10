@@ -1,3 +1,10 @@
+/**
+ * Bryan, Clayton, Josephine & Oliver
+ * December 5, 2018
+ * Purpose: This class is the RoachMotel and our implementation on the Singleton design pattern.
+ * Inputs: Keeps track of the RoachMotel and a map of the rooms and its vacancy and waitlist.
+ * Output: toString to show rooms.
+ */
 
 import java.util.*;
 
@@ -163,7 +170,7 @@ public class RoachMotel implements Subject{
      */
     public void checkOut(RoachColony colony, int days){
 
-        System.out.println("Roach colony " + colony + " is checking out:");
+        System.out.println(colony + " is checking out:");
 
         //Retrieves the particular and saves it as vacant
         Room colonyRoom = colony.getRoom();
@@ -172,7 +179,7 @@ public class RoachMotel implements Subject{
         //Calculates the the cost of the room and amenities times the number of days
         double cost = (colonyRoom.cost() + colonyRoom.getAmenityCost()) * days;
 
-        System.out.println("The totalt price for the room is: $" +  cost + ". \n The Colony has been checked out now. ");
+        System.out.println("The total price for the room is: $" + cost + ". \nThe Colony has been checked out now. ");
 
         if(vacancy == false) {
             vacancy();
@@ -216,11 +223,11 @@ public class RoachMotel implements Subject{
         String str = "Welcome to the roach motel!";
 
         if(vacancy) {
-            str += "\nVacancy! The following rooms are available: ";
+            str += "\nVacancy! The following rooms are available: \n";
             for(Room room : RM_map.keySet()) {
                 if (RM_map.get(room) == true){
 
-                    str += room + ", ";
+                    str += room + "\n";
                 }
             }
 

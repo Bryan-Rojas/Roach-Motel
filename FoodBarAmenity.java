@@ -2,8 +2,8 @@
  * Bryan, Clayton, Josephine & Oliver
  * December 5, 2018
  * Purpose: Decorated class to describe the Foodbar Amenity as well as the cost
- * Inputs:
- * Output: description, and cost of Foodbar with or without optional Refill
+ * Inputs: N/A
+ * Output: Description, and cost of Foodbar with or without optional Refill
  */
 
 public class FoodBarAmenity extends AmenityDecorator {

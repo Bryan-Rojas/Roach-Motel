@@ -3,9 +3,14 @@
  * Purpose: Decorated class to describe the Spray Resistant Shower Amenity as well as the cost
  * Inputs:
  * Output: description, and cost of Spray Resistant Shower
+ *
  */
-     * Default constructor - no body
-     */
+
+public class SprayResistantShowerAmenity extends AmenityDecorator{
+    /*
+    * 
+    *  Default constructor - no body 
+    */
     public SprayResistantShowerAmenity(){}
 
     /**
@@ -19,9 +24,7 @@
      * @return Cost of Spray Resistant Shower
      */
     public double cost(){
-
         return 25.00;
-
     }
 }
 

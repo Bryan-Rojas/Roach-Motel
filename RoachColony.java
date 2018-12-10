@@ -2,8 +2,8 @@
  * Bryan, Clayton, Josephine & Oliver
  * December 5, 2018
  * Purpose: This class represents a Roach Colony with a name, population, growth rate, and can check in to a Motel. Roach Colony is an Observer to Subject (Motel)
- * Inputs: name of colony, initial population, growthrate, and a motel as a Subject
- * Output: name, population, and growthrate, and which room in motel is has checked in to
+ * Inputs: Name of colony, initial population, growthrate, and a motel as a Subject
+ * Output: Name, population, and growthrate, and which room in motel is has checked in to
  */
 public class RoachColony implements Observer {
 
@@ -99,7 +99,7 @@ public class RoachColony implements Observer {
      */
     @Override
     public String toString() {
-        return "This is a Roach Colony " + name + ", with a population of: " + population;
+        return "Roach Colony of " + name + ", with a population of: " + population;
     }
 }
 
