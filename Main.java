@@ -9,11 +9,19 @@
 
 public class Main {
     public static void main(String[] args){
+
+        System.out.println("Create a new Roach Motel with 5 rooms");
+        System.out.println();
+
         RoachMotel TheRoach911 = RoachMotel.getInstance();
 
-        TheRoach911.createRooms(6);
+        TheRoach911.createRooms(5);
         System.out.println(TheRoach911);
+        System.out.println();
 
+        System.out.println();
+        System.out.println("Create 6 roach colonies and try to check them in");
+        System.out.println();
 
         RoachColony r1 = new RoachColony("Nielsen",2,1.0,TheRoach911);
         RoachColony r2 = new RoachColony("Hansen",3,1.2,TheRoach911);
@@ -25,9 +33,13 @@ public class Main {
         TheRoach911.notifyObserver();
 
         TheRoach911.checkIn(r1,"deluxe", true, false, true, true);
+        System.out.println();
         TheRoach911.checkIn(r2,"regular", false, false, false, false);
+        System.out.println();
         TheRoach911.checkIn(r3,"suite", true, true, false, false);
+        System.out.println();
         TheRoach911.checkIn(r4,"deluxe", false, true, true, true);
+        System.out.println();
         TheRoach911.checkIn(r5,"suite", false, false, false, true);
         System.out.println();
         TheRoach911.checkIn(r6,"regular", true, true, true, true);
@@ -42,7 +54,7 @@ public class Main {
 
         System.out.println();
         System.out.println(TheRoach911);
-
+        System.out.println();
 
         TheRoach911.checkIn(r6, "suite", true, false, true, false);
         System.out.println();

@@ -29,7 +29,7 @@ public class SpaAmenity extends AmenityDecorator {
 
     @Override
     public String toString() {
-        return "This is a Spa amenity with a cost of " + cost();
+        return "Spa amenity with a cost of " + cost();
     }
 }
 

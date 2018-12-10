@@ -68,11 +68,12 @@ public class RoachColony implements Observer {
      */
     public void throwParty() {
         System.out.println(name + " throws a PARTY!!!!");
-        System.out.print("Population increases from " + population); //print out current population count
+        System.out.println("Population increases:"); //print out current population count
 
-        population += population * growthRate; //increase population by growth factor
-
-        System.out.println(" to " + population); //print current population
+        System.out.print("population " + population + " * growth rate " + growthRate + " = ");
+        population = (int) Math.ceil(population * growthRate); //increase population by growth factor
+        System.out.println(population);
+        System.out.println("Result is rounded up, because roaches lives even if they are in pieces");
 
         ((RoachMotel) motel).sprayParty(this); //call sprayParty method in RoachMotel class
 
@@ -99,7 +100,7 @@ public class RoachColony implements Observer {
      */
     @Override
     public String toString() {
-        return "Roach Colony of " + name + ", with a population of: " + population;
+        return "Roach Colony " + name + ", with a population of " + population + " and a growth rate of " + growthRate;
     }
 }
 

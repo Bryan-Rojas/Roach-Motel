@@ -44,6 +44,6 @@ public class FoodBarAmenity extends AmenityDecorator {
 
     @Override
     public String toString() {
-        return "This is a Food bar amenity. Refill is " + refill + " so cost is " + cost();
+        return "Food bar amenity and refill is " + refill + " so cost is " + cost();
     }
 }

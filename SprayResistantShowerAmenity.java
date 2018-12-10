@@ -29,7 +29,7 @@ public class SprayResistantShowerAmenity extends AmenityDecorator{
 
     @Override
     public String toString() {
-        return "This is a Spray resistant shower amenity with a cost of " + cost();
+        return "Spray resistant shower amenity with a cost of " + cost();
     }
 }
 

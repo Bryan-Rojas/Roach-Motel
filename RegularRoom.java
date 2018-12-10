@@ -35,6 +35,6 @@ public class RegularRoom extends Room {
 
     @Override
     public String toString() {
-        return "This is a Regular room with a cost of " + cost;
+        return "Regular room with a cost of " + cost;
     }
 }

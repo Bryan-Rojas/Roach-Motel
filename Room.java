@@ -50,7 +50,7 @@ public abstract class Room {
     /**
      * @return Set - the HashSet of amenities
      */
-    public Set<AmenityDecorator> GetAmenities() { return amenities; }
+    public Set<AmenityDecorator> getAmenities() { return amenities; }
 
     /**
      * @return string representation of this class with name and set of amenities

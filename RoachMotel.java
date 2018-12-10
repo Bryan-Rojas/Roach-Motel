@@ -52,7 +52,7 @@ public class RoachMotel implements Subject{
      * @param numberOfRooms - takes the wished number of rooms for the Roach Motel
      */
     public void createRooms(int numberOfRooms){
-        for (int i = 1; i<numberOfRooms; i++) {
+        for (int i = 0; i<numberOfRooms; i++) {
             RM_map.put(new RegularRoom(), true);
         }
 
@@ -117,7 +117,7 @@ public class RoachMotel implements Subject{
         //If there are no more vacant rooms, it prints a message
         //Otherwise the room is saved in the map again as the wished room type and with the wished amenities
         if(nonVacantRooms == RM_map.size()) {
-            System.out.println("There is no more vacant rooms\n" + rc.getName() + " is added to the waitlist");
+            System.out.println(rc.getName() + " is trying to check in but there is no more vacant rooms\n" + rc.getName() + " is added to the waitlist");
             noVacancy();
             registerObserver(rc);
 
@@ -148,8 +148,8 @@ public class RoachMotel implements Subject{
             //The roach colony sets the room
             rc.setRoom(room);
 
-            System.out.println(rc.getName() + " checked in to a room.");
-
+            System.out.println(rc.getName() + " checked in to a " + room + " with the following amenities " + room.getAmenities());
+            System.out.println("Cost per night for this room is " + room.cost() + " and cost of amenities per night is " + room.getAmenityCost() + " so total cost per night is " + (room.cost() + room.getAmenityCost()));
 
             //after colony has checked in, check if there is still available rooms
             int count = 0;
@@ -181,7 +181,7 @@ public class RoachMotel implements Subject{
         //Calculates the the cost of the room and amenities times the number of days
         double cost = (colonyRoom.cost() + colonyRoom.getAmenityCost()) * days;
 
-        System.out.println("The total price for the room is: $" + cost + ". \nThe Colony has been checked out now. ");
+        System.out.println("The total price for the room is: (room cost " + colonyRoom.cost() + " + amenities cost " + colonyRoom.getAmenityCost() + ") * days " + days + " = $" + cost + ". \nThe Colony has been checked out now. ");
 
         if(vacancy == false) {
             vacancy();
@@ -200,7 +200,7 @@ public class RoachMotel implements Subject{
         System.out.println("Hotel sprays with insecticide");
 
         //get amenities from the room of the colony
-        Set<AmenityDecorator> amenities = colony.getRoom().GetAmenities();
+        Set<AmenityDecorator> amenities = colony.getRoom().getAmenities();
 
         //loop through amenities
         for(AmenityDecorator a : amenities) {
@@ -210,6 +210,7 @@ public class RoachMotel implements Subject{
 
                 //reduce population by 25%, round up because roaches lives even if they are in pieces
                 colony.setPopulation((int) Math.ceil(colony.getPopulation() * 0.75));
+
                 return;
             }
         }
@@ -232,11 +233,10 @@ public class RoachMotel implements Subject{
                     str += room + "\n";
                 }
             }
-
+            str += "Room changes are available at check-in";
         } else {
             str += "\nNo Vacancy! The waitlist for a room is: " + waitList;
         }
-
         return str;
     }
 }
